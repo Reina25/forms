@@ -26,6 +26,9 @@ export class AppComponent {
 
   userModel = new User('rob', 'rob@test.com', 1234567890, 'default', 'morning', true);
 
+
+
+  // check if the topic is selected other than the default ('i am interested in)
   validateTopic(value: any){
     if(value === 'default'){
       this.topicHasError=true;
@@ -34,13 +37,14 @@ export class AppComponent {
     }
   }
 
+  // submit form response to database
   onSubmit(userForm:any){
     this.submitted=true;
     console.log(userForm.value);
     this.submitted=true;
     this._enrollmentService.enroll(this.userModel).subscribe(
-      (      data: any) => console.log('Success!', data),
-      (      error: any) => this.errorMsg=error.statusText
+      (data: any) => console.log('Success!', data),
+      (error: any) => this.errorMsg=error.statusText
     );
   }
 

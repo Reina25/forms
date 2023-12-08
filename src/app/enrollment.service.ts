@@ -16,10 +16,10 @@ export class EnrollmentService {
 
   constructor(private _http: HttpClient) { }
 
-  enroll(user: User){
-    return this._http.post<any>(this._url, user)
-              .pipe(catchError(this.errorHandler));
 
+  // when an error occurs, display an error to this url mentioned above
+  enroll(user: User){
+    return this._http.post<any>(this._url, user).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error: HttpErrorResponse){
